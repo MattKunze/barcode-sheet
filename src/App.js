@@ -18,9 +18,13 @@ function parseQueryString(input) {
 
 function parseState() {
   const urlState = parseQueryString(window.location.search);
+  const title = decodeURIComponent(urlState.title || "List o' Bar Codes");
   const labels = urlState.labels || '';
+
+  document.title = title;
+
   return {
-    title: decodeURIComponent(urlState.title || "List o' Bar Codes"),
+    title,
     labels: labels.split(/\s*,\s*/).map(decodeURIComponent).filter(t => t)
   };
 }
