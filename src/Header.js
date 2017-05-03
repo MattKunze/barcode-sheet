@@ -1,6 +1,6 @@
-import React from 'react';
+import React from 'react'
 
-import ContentEditable from './ContentEditable';
+import ContentEditable from './ContentEditable'
 
 export default function Header(props) {
   return (
@@ -11,7 +11,7 @@ export default function Header(props) {
             <ContentEditable
               html={props.title}
               onChange={ev => {
-                props.updateTitle(ev.target.value);
+                props.updateTitle(ev.target.value)
               }}
             />
           </strong>
@@ -26,5 +26,5 @@ export default function Header(props) {
         </div>
       </div>
     </nav>
-  );
+  )
 }

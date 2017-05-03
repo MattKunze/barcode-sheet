@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
+import React, { Component } from 'react'
+import ReactDOM from 'react-dom'
 
 class ContentEditable extends Component {
   render() {
-    const emitChange = this.emitChange.bind(this);
+    const emitChange = this.emitChange.bind(this)
     return (
       <div
         onInput={emitChange}
@@ -11,22 +11,22 @@ class ContentEditable extends Component {
         contentEditable
         dangerouslySetInnerHTML={{ __html: this.props.html }}
       />
-    );
+    )
   }
   shouldComponentUpdate(nextProps) {
-    return nextProps.html !== ReactDOM.findDOMNode(this).innerHTML;
+    return nextProps.html !== ReactDOM.findDOMNode(this).innerHTML
   }
   emitChange() {
-    var html = ReactDOM.findDOMNode(this).innerHTML;
+    var html = ReactDOM.findDOMNode(this).innerHTML
     if (this.props.onChange && html !== this.lastHtml) {
       this.props.onChange({
         target: {
           value: html
         }
-      });
+      })
     }
-    this.lastHtml = html;
+    this.lastHtml = html
   }
 }
 
-export default ContentEditable;
+export default ContentEditable

@@ -1,9 +1,9 @@
-import React from 'react';
-import QRCode from 'qrcode.react';
+import React from 'react'
+import QRCode from 'qrcode.react'
 
-import ContentEditable from './ContentEditable';
+import ContentEditable from './ContentEditable'
 
-const CARD_STYLE = { height: '100%' };
+const CARD_STYLE = { height: '100%' }
 
 export default function QrCard(props) {
   return (
@@ -13,7 +13,7 @@ export default function QrCard(props) {
           <ContentEditable
             html={props.label || '[add item]'}
             onChange={ev => {
-              props.updateLabel(ev.target.value);
+              props.updateLabel(ev.target.value)
             }}
           />
         </div>
@@ -26,5 +26,5 @@ export default function QrCard(props) {
         {props.label && <QRCode value={props.label} />}
       </div>
     </div>
-  );
+  )
 }
