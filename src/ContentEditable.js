@@ -19,7 +19,6 @@ class ContentEditable extends Component {
   emitChange() {
     var html = ReactDOM.findDOMNode(this).innerHTML;
     if (this.props.onChange && html !== this.lastHtml) {
-      console.warn('emit', html);
       this.props.onChange({
         target: {
           value: html
