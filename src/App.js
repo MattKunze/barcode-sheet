@@ -18,7 +18,7 @@ function parseQueryString(input) {
 
 function parseState() {
   const urlState = parseQueryString(window.location.search);
-  const labels = urlState.labels || [];
+  const labels = urlState.labels || '';
   return {
     labels: labels.split(/\s*,\s*/).map(decodeURIComponent).filter(t => t)
   };
