@@ -20,13 +20,14 @@ function parseState() {
   const urlState = parseQueryString(window.location.search);
   const labels = urlState.labels || '';
   return {
+    title: decodeURIComponent(urlState.title || "List o' Bar Codes"),
     labels: labels.split(/\s*,\s*/).map(decodeURIComponent).filter(t => t)
   };
 }
 
 function saveState(state) {
   const labels = state.labels.map(encodeURIComponent);
-  window.location.search = `?labels=${labels.join(',')}`;
+  window.location.search = `?title=${state.title}&labels=${labels.join(',')}`;
 }
 
 class App extends Component {
@@ -38,6 +39,8 @@ class App extends Component {
     return (
       <div className="app">
         <Header
+          title={this.state.title}
+          updateTitle={this.updateTitle.bind(this)}
           resetState={() => this.setState(parseState())}
           saveState={() => saveState(this.state)}
         />
@@ -49,6 +52,9 @@ class App extends Component {
         />
       </div>
     );
+  }
+  updateTitle(title) {
+    this.setState({ title });
   }
   updateLabel(pos, newValue) {
     let labels = this.state.labels.slice();
